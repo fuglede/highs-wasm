@@ -87,7 +87,7 @@ Module.mipCall = function(numColumns, numRows, constraintMatrixFormat, sense, of
   const rowValueBuffer = Module._malloc(numRows * doubleSize);
   const modelStatusBuffer = Module._malloc(intSize);
 
-  const solverStatus = Highs_mipCall(numColumns, numRows, numNonZeros, constraintMatrixFormat, sense, offset, 
+  const status = Highs_mipCall(numColumns, numRows, numNonZeros, constraintMatrixFormat, sense, offset, 
     columnCostBuffer, columnLowerBuffer, columnUpperBuffer,
     rowLowerBuffer, rowUpperBuffer, constraintStartBuffer, constraintIndexBuffer,
     constraintValueBuffer, integralityBuffer, columnValueBuffer, rowValueBuffer, modelStatusBuffer);
@@ -100,6 +100,7 @@ Module.mipCall = function(numColumns, numRows, constraintMatrixFormat, sense, of
   getDoubleArray(rowValues, rowValueBuffer);
   getIntArray(modelStatusA, modelStatusBuffer);
 
+  const solverStatus = solverStatusCodes[status];
   const modelStatus = modelStatusCodes[modelStatusA[0]];
 
   // Clean up
