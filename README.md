@@ -18,7 +18,8 @@ program in compressed sparse (CSC/CSR) format, as is often the case, hence avoid
 ```html
 <html>
   <head>
-    <script src="highs.js"></script>
+    <!-- Do not rely on the URL below never changing. For now, download highs.js and highs.wasm. -->
+    <script src="https://fuglede.github.io/highs-wasm/highs.js"></script>
     <script>
       Highs().then(highs => {
         // Let us solve the following maximization problem:
