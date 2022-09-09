@@ -1,3 +1,4 @@
+mkdir -p build
 cd build
 emcmake cmake ../HiGHS -DOPENMP=OFF -DFAST_BUILD=OFF -DSHARED=OFF
 emmake make -j8 libhighs
