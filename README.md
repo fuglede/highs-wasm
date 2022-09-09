@@ -1,19 +1,26 @@
 # highs-wasm
 
-This provides a Emscripten-based Wasm binary of the HiGHS optimization software along with JavaScript wrappers of the low-level solvers from its C API.
+This provides a [Emscripten](https://emscripten.org)-based [WebAssembly](https://webassembly.org/) binary of the [HiGHS](https://highs.dev) optimization software
+along with JavaScript wrappers of the low-level solvers from its C API.
 
 ## Use case
 
 The intended use of this is for situations where you need access to a high-performance MILP/LP/QP solver, but you do not want to use commercial
 solvers, and where you want to be able to access the solvers from a Wasm runtime such as a browser. In particular, this is useful when you want
 to ship a piece of software that embeds the solver in a way that is easy for users to work with (as a web page is), and where you do not want
-to manage a server backend hosting the optimization software, but would rather that this just runs entirely on the client.
+to manage a server backend hosting the optimization software, but would rather that everything runs entirely on the client.
 
 If you can provide the program in LP format, then the [highs-js](https://github.com/lovasoa/highs-js) project (which we draw heavily on) solves
 this problem. Here, instead, we expose the lower-level solver methods and assume that you are able to provide the constraint matrix of your
-program in compressed sparse (CSC/CSR) format, as is often the case, hence avoiding a potentially expensive model/LP format creation step.
+program in [compressed sparse](https://en.wikipedia.org/wiki/Sparse_matrix) (CSC/CSR) format. This is often the case and going directly to
+this level avoids a potentially expensive model creation step.
 
-## Example
+## Example usage
+
+The example below shows how to make use of the solver in vanilla JavaScript. After loading `highs.js`, the Emscripten module can be obtained
+from the `Highs()` promise, and the module then provides functions wrapping the solvers from the HiGHS C API.
+
+The example below can be seen in action on https://fuglede.github.io/highs-wasm/.
 
 ```html
 <html>
