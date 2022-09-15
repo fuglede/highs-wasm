@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "test": "node --no-experimental-fetch test.js",
+    "build": "./build.sh"
+  }
+}
