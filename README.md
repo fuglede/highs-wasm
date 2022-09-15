@@ -1,3 +1,5 @@
+[![Run npm test](https://github.com/fuglede/highs-wasm/actions/workflows/test.yml/badge.svg)](https://github.com/fuglede/highs-wasm/actions/workflows/test.yml)
+
 # highs-wasm
 
 This provides a [Emscripten](https://emscripten.org)-based [WebAssembly](https://webassembly.org/) binary of the [HiGHS](https://highs.dev) optimization software
