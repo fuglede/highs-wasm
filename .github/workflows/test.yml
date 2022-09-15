@@ -1,0 +1,16 @@
+name: Run npm test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+      - uses: mymindstorm/setup-emsdk@v11
+      - name: build
+        run: npm run build
+      - name: test
+        run: npm test
